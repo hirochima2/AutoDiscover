@@ -1,17 +1,23 @@
+const express = require('express');
+const { Pool } = require('pg');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const carRoutes = require('./routes/carRoutes');
+require('dotenv').config();
 
-{
-  "name": "autodiscover-server",
-  "version": "1.0.0",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
-  },
-  "dependencies": {
-    "express": "^4.17.1",
-    "mongoose": "^5.10.9",
-    "dotenv": "^8.2.0",
-    "cors": "^2.8.5",
-    "body-parser": "^1.19.0"
-  }
-}
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+app.use(cors());
+app.use(bodyParser.json());
+
+// PostgreSQL connection
+const pool = new Pool({
+  connectionString: process.env.POSTGRESQL_URI,
+});
+
+app.use('/api/cars', carRoutes(pool));
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
