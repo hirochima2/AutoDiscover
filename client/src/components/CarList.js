@@ -7,7 +7,7 @@ const CarList = () => {
 
   useEffect(() => {
     const fetchCars = async () => {
-      const response = await axios.get('https://your-backend-url/api/cars');
+      const response = await axios.get('https://autodiscover-d1ql.onrender.com/api/cars');
       setCars(response.data);
     };
     fetchCars();
