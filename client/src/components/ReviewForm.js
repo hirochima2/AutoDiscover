@@ -6,7 +6,7 @@ const ReviewForm = ({ carId }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post(`https://your-backend-url/api/cars/${carId}/reviews`, review);
+    await axios.post(`https://autodiscover-d1ql.onrender.com/api/cars/${carId}/reviews`, review);
     // Optionally, refresh the reviews or show a success message
   };
 
