@@ -2,7 +2,7 @@
   "name": "autodiscover-client",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://<your-github-username>.github.io/AutoDiscover-Client",
+  "homepage": "https://hirochima2.github.io/AutoDiscover-Client/",
 "predeploy": "npm run build",
 "deploy": "gh-pages -d build",
   "dependencies": {
