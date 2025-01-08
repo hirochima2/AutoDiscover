@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const CarList = () => {
   const [cars, setCars] = useState([]);
 
   useEffect(() => {
     const fetchCars = async () => {
-      const response = await axios.get('https://autodiscover-d1ql.onrender.com/api/cars');
+      const response = await axios.get('https://autodiscover-server.onrender.com/api/cars');
       setCars(response.data);
     };
     fetchCars();
@@ -17,7 +18,9 @@ const CarList = () => {
       <h2>Available Cars</h2>
       <ul>
         {cars.map(car => (
-          <li key={car.id}>{car.name}</li>
+          <li key={car.id}>
+            <Link to={`/cars/${car.id}`}>{car.name}</Link>
+          </li>
         ))}
       </ul>
     </div>
